@@ -33,7 +33,13 @@ using std::memory_order_relaxed;
 #endif
 #endif
 
-#define CPERFETTO_EXPORT __declspec(dllexport)
+#if defined(_MSC_VER)
+    //  Microsoft
+    #define CPERFETTO_EXPORT __declspec(dllexport)
+#elif defined(__GNUC__)
+    //  GCC
+    #define CPERFETTO_EXPORT __attribute__((visibility("default")))
+#endif
 
 #ifdef __cplusplus
 extern "C" {

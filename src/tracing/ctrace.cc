@@ -278,7 +278,7 @@ extern "C" CPERFETTO_EXPORT ctrace_trace_buffer ctrace_trace_stop_to_buffer(
 
 extern "C" CPERFETTO_EXPORT void ctrace_free_trace_buffer(
     ctrace_trace_buffer* const trace_data) {
-  delete (std::vector<char>*)trace_data->std_vec;
+  delete reinterpret_cast<std::vector<char>*>(trace_data->std_vec);
   trace_data->std_vec = nullptr;
   trace_data->data = nullptr;
   trace_data->size = 0;

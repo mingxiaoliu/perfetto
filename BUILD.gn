@@ -253,6 +253,15 @@ shared_library("cperfetto") {
   sources = [ "include/perfetto/tracing/ctrace.h", "src/tracing/ctrace.cc" ]
 }
 
+static_library("cperfetto_static") {
+  deps = [
+    "gn:default_deps",
+    "src/tracing:client_api",
+    "src/tracing:platform_impl"
+  ]
+  sources = [ "include/perfetto/tracing/ctrace.h", "src/tracing/ctrace.cc" ]
+}
+
 if (!build_with_chromium) {
   # Client library target exposed to the Android tree.
   # Still in experimental stage and not API stable yet.

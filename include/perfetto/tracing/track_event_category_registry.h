@@ -39,7 +39,6 @@ struct PERFETTO_EXPORT_COMPONENT Category {
   Tags tags = {};
 
   constexpr Category() = default;
-  constexpr Category(const Category&) = default;
   constexpr explicit Category(const char* name_)
       : name(CheckIsValidCategory(name_)),
         name_sizes_(ComputeNameSizes(name_)) {}
